@@ -112,20 +112,6 @@ package com.ddg.arps.game.map
 		private function UpdateSprite():void
 		{
 			sprite.removeChildren();
-			if (owner == null)
-			{
-				outlineImage.color = 0xffffff;
-				if (contentImage != null)
-					contentImage.color = 0xffffff;
-			}
-			else
-			{
-				outlineImage.color = owner.Color;
-				if (contentImage != null)
-					contentImage.color = owner.Color;
-				if (contentText != null)
-					contentText.color = owner.Color;
-			}
 			sprite.addChild(outlineImage);
 			if (type == TYPE_FACTORY)
 				sprite.addChild(contentImage);
@@ -164,6 +150,40 @@ package com.ddg.arps.game.map
 			scissorsSprite.x = position.x - 22;
 			scissorsSprite.y = position.y + 15;
 			scissorsSprite.visible = false;
+			
+			UpdateUnits();
+			UpdateOwner();
+		}
+		
+		private function UpdateOwner():void
+		{
+			if (owner == null)
+			{
+				outlineImage.color = 0xffffff;
+				if (contentImage != null)
+					contentImage.color = 0xffffff;
+				rockImage.color = 0xffffff;
+				paperImage.color = 0xffffff;
+				scissorsImage.color = 0xffffff;
+			}
+			else
+			{
+				outlineImage.color = owner.Color;
+				if (contentImage != null)
+					contentImage.color = owner.Color;
+				if (contentText != null)
+					contentText.color = owner.Color;
+				rockImage.color = owner.Color;
+				paperImage.color = owner.Color;
+				scissorsImage.color = owner.Color;
+			}
+		}
+		
+		private function UpdateUnits():void
+		{
+			rockSprite.visible = rockUnit.Amount > 0;
+			paperSprite.visible = paperUnit.Amount > 0;
+			scissorsSprite.visible = scissorsUnit.Amount > 0;
 		}
 		
 		public function Dispose():void
@@ -205,6 +225,7 @@ package com.ddg.arps.game.map
 					scissorsUnit.Amount += unit.Amount;
 					break;
 			}
+			UpdateUnits();
 		}
 	}
 }

@@ -9,9 +9,9 @@ package com.ddg.arps.game.map
 		public static const TYPE_PAPER:uint = 1;
 		public static const TYPE_SCISSORS:uint = 2;
 		
-		public static const IMAGE_ROCK = "0";
-		public static const IMAGE_PAPER = "1";
-		public static const IMAGE_SCISSORS = "2";
+		public static const IMAGE_ROCK:String = "0";
+		public static const IMAGE_PAPER:String = "1";
+		public static const IMAGE_SCISSORS:String = "2";
 		
 		private var type:uint = TYPE_ROCK;
 		private var amount:uint = 0;

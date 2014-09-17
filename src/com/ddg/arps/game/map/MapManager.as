@@ -139,7 +139,7 @@ package com.ddg.arps.game.map
 					var ev:Point = PointHelper.Subtract(ep2, ep1);
 					var u1:Number = PointHelper.Cross(PointHelper.Subtract(ep1, p1), v) / PointHelper.Cross(v, ev);
 					var u2:Number = PointHelper.Cross(PointHelper.Subtract(p1, ep1), ev) / PointHelper.Cross(ev, v);
-					if (u1 > 0 && u1 < 1 && u2 > 0 && u2 < 1)
+					if (u1 > 0.001 && u1 < 0.999 && u2 > 0.001 && u2 < 0.999)
 					{
 						return false;
 					}
@@ -185,6 +185,11 @@ package com.ddg.arps.game.map
 						nodes.push(mirrorNode);
 						newNodes.push(node);
 						newNodes.push(mirrorNode);
+						
+						// add some random units
+						var unit:Unit = new Unit(Math.floor(Math.random() * 3), Math.round(Math.random() * 5));
+						node.AddUnit(unit);
+						mirrorNode.AddUnit(unit);
 					}
 					else
 					{
